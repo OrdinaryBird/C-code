@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<math.h>
+
+int IsTheNumber(const int N);
+
+int main()
+{
+    int n1,n2,i,cnt;
+
+    scanf("%d %d",&n1,&n2);
+    cnt = 0;
+    for(i=n1;i<=n2;i++){
+        if(IsTheNumber(i))
+            cnt++;
+    }
+    printf("cnt = %d\n",cnt);
+
+    return 0;
+}
+
+int IsTheNumber(const int N)
+{
+    int n=N;
+    int a,i;
+    int p[10]={0};//利用数组来存放是否数字中存在两数字相同的数
+    int m = sqrt(N);//利用m来判断N是否为完全平方数
+    if(m * m == N){//if判断
+            while(n){
+                a = n%10;//求余
+                p[a]++;//相同数在位置+1
+                n=n/10;//确保可以查询到每个位置的值
+            }
+            for(i=0;i<10;i++){
+                if(p[i]>1)//比较至少有两位数字相同
+                    return 1;
+            }
+    }
+        return 0;
+}

@@ -1,0 +1,26 @@
+#include<stdio.h>
+
+int Count_Digit(const int N,const int D);
+
+int main()
+{
+    int N,D;
+
+    scanf("%d %d",&N,&D);
+    printf("%d\n",Count_Digit(N,D));
+
+    return 0;
+}
+
+int Count_Digit(const int N,const int D)
+{
+    int a,n = N>0 ? N : -N;//负数无法判断，需调整为正数
+    int p[10]={0};
+    if(n==D) return 1;//当N==D==0时不会进入while循环，所以会直接return 0，为避免这个情况，需要特殊处理；
+    while(n){
+        a = n%10;//求出最后一位的数
+        p[a]++;//在对应位置加1
+        n /= 10;
+    }
+    return p[D];
+}

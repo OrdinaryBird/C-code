@@ -34,7 +34,7 @@ void Print_Factorial(const int N)
                         num[j] = tmp%10;
                         carry = tmp/10;
                     }
-                    while(carry){//利用carry变量将所算的中间数据存入num数组
+                    while(carry){//该处为进阶，当carry还存在值时，自动向前进位
                         num[++k]=carry%10;
                         carry=carry/10;
                         }

@@ -31,8 +31,8 @@ void Print_Factorial(const int N)
                 for( i=1 ; i<=N ; i++){
                     for(j=0;j<=k;j++){
                         tmp = num[j]*i+carry;//
-                        num[j] = tmp%10;
-                        carry = tmp/10;
+                        num[j] = tmp%10;//将末尾存入对应位置
+                        carry = tmp/10;//将计算出的中间量移到最后个位
                     }
                     while(carry){//该处为进阶，当carry还存在值时，自动向前进位
                         num[++k]=carry%10;

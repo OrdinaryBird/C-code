@@ -1,0 +1,47 @@
+#include <stdio.h>
+
+void Print_Factorial ( const int N );
+
+int main()
+{
+    int N;
+
+    scanf("%d", &N);
+    Print_Factorial(N);
+    return 0;
+}
+
+void Print_Factorial(const int N)
+{
+    int i,j,s = 1,tmp = 0;
+    int k = 0,carry = 0;
+    int num[3001]={0};//用于记住 12 之后各位置的数字
+    if( N > 1000 || N < 0){//限制条件
+        printf("Invalid input");
+    }
+    else{
+        if(N>=0 && N<=12){
+            for(i=1;i<=N;i++){
+                s *= i;
+            }
+            printf("%d",s);
+        }
+        else if(N>12){//当算阶乘的数字超过12时，超过了 int 的取值范围，所以换另一种方法计算
+                num[0] = 1;//初始化num
+                for( i=1 ; i<=N ; i++){
+                    for(j=0;j<=k;j++){
+                        tmp = num[j]*i+carry;//
+                        num[j] = tmp%10;
+                        carry = tmp/10;
+                    }
+                    while(carry){//利用carry变量将所算的中间数据存入num数组
+                        num[++k]=carry%10;
+                        carry=carry/10;
+                        }
+                }
+                for(i=k;i>=0;i--)
+                printf("%d",num[i]);
+                printf("\n");
+        }
+    }
+}

@@ -1,0 +1,76 @@
+
+#include "game.h"
+//三子棋实验
+extern void InitBoard(char board[ROW][COL],int row,int col);
+
+void menu()
+{
+    printf("           Menu           \n");
+    printf("**************************\n");
+    printf("*****1.begin   2.exit*****\n");
+    printf("**************************\n");
+}
+
+void game()
+{
+    char board[ROW][COL] = {0};//定义棋盘
+
+    InitBoard(board,ROW,COL);//初始化棋盘
+
+    DisplayBoard(board,ROW,COL);//打印棋盘
+
+    while(1)//下棋
+    {
+        PlayerMove(board,ROW,COL);//玩家下棋
+        DisplayBoard(board,ROW,COL);//打印棋盘
+        ret = Iswin(board,ROW,COL);//判断玩家是否赢
+        if(Iswin() != 'c');
+        {
+            break;
+        }
+
+        ComputerMove(board,ROW,COL);//电脑下棋
+        DisplayBoard(board,ROW,COL);//打印棋盘
+        Iswin(board,ROW,COL);//判断电脑是否赢
+        if(Iswin() != 'c');
+        {
+            break;
+        }
+    }
+    if(ret == "*")
+        printf("玩家赢！\n");
+    else if(ret == "#")
+        printf("电脑赢！\n");
+    else
+        printf("平局！\n");
+}
+
+void begin()
+{
+    int input;
+    srand((unsigned int)time(NULL));
+
+    do{
+        menu();
+        printf("请选择:>");
+        scanf("%d",&input);
+        switch(input)
+        {
+        case 1:
+            game();
+            break;
+        case 2:
+            printf("退出\n");
+            break;
+        default:
+            printf("输入错误！\n");
+            break;
+        }
+    }while(input != 2);
+}
+
+int main()
+{
+    begin();
+    return 0;
+}

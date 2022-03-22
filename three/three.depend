@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1647957436 source:e:\数据结构\text\新建文件夹\pta\three\main.c
+	"game.h"
+
+1647950690 e:\数据结构\text\新建文件夹\pta\three\game.h
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
+1647957305 source:e:\数据结构\text\新建文件夹\pta\three\game.c
+	"game.h"
+

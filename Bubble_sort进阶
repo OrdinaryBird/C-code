@@ -1,10 +1,33 @@
 #include<stdio.h>
+#include<stdlib.h>
 //该实现项目仿照qsort函数，可以进行多种类型数组的冒泡排序
 //void qsort(void *base,size_t num,size_t width,int(*cmp)(const void *e1,const void *e2));//库函数 快速排序
 
 int cmp_int(void* e1,void* e2)//整形交换规则
 {
     return *(int*)e1 - *(int*)e2;
+}
+
+int cmp_float(void* e1,void* e2)//浮点数类型交换规则
+{
+    //利用浮点数类型若进行强制转换成int的话会舍去小数
+    if( *(float*)e1 == *(float*)e2 )
+        return 0;
+    else if( *(float*)e1 > *(float*)e2 )
+        return 1;
+    else
+        return -1;
+}
+
+int cmp_stu_by_age(void* e1,void* e2)//结构体函数中的整形类
+{
+    return ((struct Stu*)e1->age - (struct Stu*)e2->age);//字中的Stu为结构体名，age为参数
+}
+
+int cmp_stu_by_name(const void* e1,const void* e2)
+{
+    //字符串比较不能直接用>=<比较，应该用strcmp函数
+    return strcmp(((struct Stu*)e1)->name,((struct Stu*)e2)->name);
 }
 
 void Swap(char* b1,char* b2,int width)//按字节将每个字节进行换位

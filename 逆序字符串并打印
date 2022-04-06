@@ -1,0 +1,34 @@
+//逆序字符串
+#include<stdio.h>
+#include<string.h>
+#include<assert.h>
+
+void reverse(char* str)
+{
+    assert(str);//断言，检查是否为空
+    int len = strlen(str);
+    char* left = str;
+    char* right = str + len - 1;
+
+    while(left < right)//实现头尾字符的交换
+    {
+        char tmp = *left;
+        *left = *right;
+        *right = tmp;
+        left++;
+        right--;
+    }
+}
+
+int main()
+{
+    char ch[256] = { 0 };
+    //scanf("%s",ch);//利用scanf不能进行空格之后的打印
+    gets(ch);
+    //逆序函数
+    reverse(ch);
+
+    printf("%s\n",ch);
+
+    return 0;
+}

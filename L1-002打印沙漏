@@ -1,0 +1,51 @@
+//L1-002打印沙漏
+#include<stdio.h>
+
+void print_shalou(int line,char a)//打印函数，打印沙漏
+{
+    //打印上半部分
+    int i = 0;
+    for(i = 0;i < line;i++)
+    {
+        int j = 0;
+        for(j = 0;j < i;j++)//先打印空格
+            printf(" ");
+        for(j = 0;j < 2*(line - i)-1;j++)
+            printf("%c",a);//再打印字符
+        printf("\n");
+    }
+    //打印下半部分
+    for(i = 0;i< line - 1;i++)
+    {
+        int j = 0;
+        for(j = 0;j < line - 2 - i;j++)
+            printf(" ");
+        for(j = 0;j < 2*(i+1)+1;j++)
+            printf("%c",a);
+        printf("\n");
+    }
+}
+
+int main()
+{
+    int n = 0;
+    char c = '0';
+    scanf("%d %c",&n,&c);
+
+    //查出最多使用多少字符个
+    int i = 1;
+    int sum = 0;
+    int count = 0;
+    //(3+5+7+9......)*2+1 <= n;
+    while(2*sum+1 <= n)//只要总数大于n，则跳出循环
+    {
+        i += 2;//相加的为3，5，7......
+        sum += i;
+        count++;//每循环一次++，计算上半部分有多少行
+    }
+
+    print_shalou(count,c);//此处的line为上半部分的行数
+    printf("%d\n",n - (2*(sum-i)+1));
+
+    return 0;
+}

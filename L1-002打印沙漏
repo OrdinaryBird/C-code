@@ -44,7 +44,7 @@ int main()
         count++;//每循环一次++，计算上半部分有多少行
     }
 
-    print_shalou(count,c);//此处的line为上半部分的行数
+    print_shalou(count,c);//此处的count为上半部分的行数
     printf("%d\n",n - (2*(sum-i)+1));
 
     return 0;

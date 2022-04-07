@@ -1,0 +1,16 @@
+//7-2 然后是几点
+#include<stdio.h>
+
+int main()
+{
+    int t,d,h,m;
+    scanf("%d%d",&t,&d);
+    
+    h=t/100;
+    m=t%100;
+    t=h*60+m+d;//将时间转化为分钟，在进行加减
+    h=t/60;
+    m=t%60;
+    
+    printf("%03d",h*100+m);
+}

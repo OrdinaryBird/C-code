@@ -1,0 +1,38 @@
+//7-4 BCD解密
+#include<stdio.h>
+
+void change_0x(int num)
+{
+    if(num == 0)//判断是否为0
+        printf("%d\n",num);
+    else
+    {
+        int a[5] = {0};
+        int count = 0;
+        while(num)//进行循环，将十进制转换为十六（0x）进制
+        {
+
+            a[count] = num % 16;
+            num /= 16;
+            count++;
+        }
+        int j = 0;
+        for(j = count-1;j >= 0;j--)//打印输出BCD数，且为倒序输出
+        {
+            if(a[j] > 9)
+                printf("%c",a[j]+55);
+            else
+                printf("%d",a[j]);
+        }
+    }
+}
+
+int main()
+{
+    int num;
+    scanf("%d",&num);
+
+    change_0x(num);
+
+    return 0;
+}
